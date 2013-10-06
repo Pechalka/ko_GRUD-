@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="app/libs/jquery.min.js"></script>
+	<script type="text/javascript" src="app/libs/jquery.mockjax.js"></script>
+	<script type="text/javascript" src="app/libs/knockout-min.js"></script>
+	<script type="text/javascript" src="app/utils.js"></script>	
+	<script type="text/javascript" src="app/fixture.js"></script>
+	<script type="text/javascript" src="app/main.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<script type="text/template" id="user-list">
+<a href="#" class="btn btn-warning" data-bind="click : $root.showDetails.bind($data, { name : '' })">new user</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach : users">
+			<tr>
+				<td><a href="#" data-bind="text : name, click : $root.showDetails"></td>
+				<td><a href='#' class="btn btn-danger btn-mini" data-bind="click : $parent.deleteClick">delete<a></td>
+			</tr>
+		<tbody>
+	</table>
+</script>
+<script type="text/template" id="user-details">
+
+<a href="#" class="btn btn-warning" data-bind="click : $root.showList"> bakc ot list</a>
+<div class="row">
+	<div class="span8">
+		<form action="billing" method="post" class="form-horizontal" id="billingform" accept-charset="utf-8">
+			<div class="control-group">
+				<label for="inputName" class="control-label">	
+					Name
+				</label>
+				<div class="controls">
+				<input id="inputName" name="inputName" type="text" data-bind="value : name" placeholder="Name" />
+				</div>
+			</div>
+
+ 
+			<div class="form-actions">
+				<button  class="btn btn-success btn-large" data-bind="click : saveClick, text : buttonText"></button>
+			</div>
+		</form>
+	</div>
+</div>
+</script>
+</head>
+<body >
+	<div class="container" data-bind="with : content">
+	<!-- ko template : { name : templateName } -->
+	<!-- /ko -->		
+	</div>
+</body>
+</html>
